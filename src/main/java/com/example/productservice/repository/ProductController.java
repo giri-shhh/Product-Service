@@ -1,6 +1,7 @@
 package com.example.productservice.repository;
 
 import com.example.productservice.model.Product;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,14 +11,20 @@ import java.util.List;
 public class ProductController {
 
     private ProductRepo productRepo;
+    private Environment environment;
 
-    public ProductController(ProductRepo productRepo) {
+
+    public ProductController(ProductRepo productRepo, Environment environment) {
         this.productRepo = productRepo;
+        this.environment = environment;
     }
 
     @GetMapping("/products")
     public List<Product> retrieveAllUsers() {
-        return productRepo.findAll();
+        String port = environment.getProperty("local.server.port");
+        List<Product> products = productRepo.findAll();
+        products.forEach(p -> p.setPort(port));
+        return products;
     }
 
     @GetMapping("/hello")

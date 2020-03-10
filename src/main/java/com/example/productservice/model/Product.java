@@ -3,6 +3,7 @@ package com.example.productservice.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Product {
@@ -11,6 +12,8 @@ public class Product {
     @GeneratedValue
     private Long id;
     private String name;
+    @Transient
+    private String port;
 
     public Product() {
     }
@@ -41,5 +44,13 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 }

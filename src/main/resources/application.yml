@@ -5,3 +5,7 @@ eureka:
     client:
         serviceUrl:
             defaultZone: http://todo-service-registry:8761/eureka
+
+spring:
+    zipkin:
+        baseUrl: http://zipkin-server:9411

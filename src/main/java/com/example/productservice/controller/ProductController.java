@@ -1,6 +1,7 @@
-package com.example.productservice.repository;
+package com.example.productservice.controller;
 
 import com.example.productservice.model.Product;
+import com.example.productservice.repository.ProductRepo;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
